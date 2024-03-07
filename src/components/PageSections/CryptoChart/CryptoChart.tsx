@@ -5,6 +5,7 @@ import React from "react";
 import { getCoinPrice } from "../../../utils/api";
 import { PageLoader } from "../../UI/PageLoader";
 import { TradingViewWidget } from "../../UI/TradingViewWidget";
+import { formatCurrency } from "./utils";
 
 interface Props {
   coinNames: string;
@@ -95,7 +96,7 @@ export const CryptoChart: React.FC<Props> = ({
                   <div className="price">
                     <div className="price-bold">
                       <Text
-                        text={`$${coin[1]?.usd}`}
+                        text={`${formatCurrency(coin[1]?.usd, "USD")}`}
                         className="sub-heading "
                       />
                       <Text
@@ -104,7 +105,10 @@ export const CryptoChart: React.FC<Props> = ({
                       />
                       <Text text="(24H)" className="light-text" />
                     </div>
-                    <Text text="Rs. 39,42,343" className="description-small" />
+                    <Text
+                      text={`${formatCurrency(coin[1].inr, "INR")}`}
+                      className="description-small"
+                    />
                   </div>
                 </React.Fragment>
               )
