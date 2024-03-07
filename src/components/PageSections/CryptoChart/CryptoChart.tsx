@@ -4,6 +4,7 @@ import "./CryptoChart.scss";
 import React from "react";
 import { getCoinPrice } from "../../../utils/api";
 import { PageLoader } from "../../UI/PageLoader";
+import { TradingViewWidget } from "../../UI/TradingViewWidget";
 
 interface Props {
   coinNames: string;
@@ -130,7 +131,9 @@ export const CryptoChart: React.FC<Props> = ({
             ))}
           </div>
         </div>
-        <div className="graph-content"></div>
+        <div className="graph-content">
+          <TradingViewWidget />
+        </div>
       </div>
     </div>
   );
