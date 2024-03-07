@@ -1,4 +1,4 @@
-import coinGeckoApi from "./CoinGeckoApiConfig";
+import coinGeckoApi from "./coinGeckoApiConfig";
 
 export const getTrendingCoins = async () => {
   let response = await coinGeckoApi.get(`/search/trending`);
