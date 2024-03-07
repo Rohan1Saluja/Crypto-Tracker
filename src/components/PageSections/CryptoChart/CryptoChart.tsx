@@ -22,7 +22,6 @@ export const CryptoChart: React.FC<Props> = ({
 }) => {
   const [activeTimeline, setActiveTimeline] = React.useState("1H");
   const coinsList = coinNames.split(",");
-  console.log("Coins List:", coinsList);
   const [coinPriceInfo, setCoinPriceInfo] = React.useState<any[]>();
   const timelines = ["1H", "24H", "7D", "1M", "3M", "6M", "1Y", "ALL"];
   const [loading, setLoading] = React.useState(false);
@@ -57,7 +56,6 @@ export const CryptoChart: React.FC<Props> = ({
     await getCoinPrice(coinNames, vs_currencies, include_24hr_change, precision)
       .then((resp) => {
         setLoading(true);
-        console.log("Coin Price Info:", resp);
         setCoinPriceInfo(resp);
       })
       .catch((error) => {
@@ -77,43 +75,38 @@ export const CryptoChart: React.FC<Props> = ({
     <div className="chart">
       <div className="header">
         {coinPriceInfo != null &&
-          Object.entries(coinPriceInfo).map(
-            (coin: any, index: number) => (
-              console.log("coin:", coin),
-              (
-                <React.Fragment key={index}>
-                  <div className="title">
-                    <div className="coin-info">
-                      <Text
-                        text={toTitleCase(coinsList[index])}
-                        className="description-bold"
-                      />
-                    </div>
-                    <div className="rank">
-                      <Button className="button">Rank</Button>
-                    </div>
-                  </div>
-                  <div className="price">
-                    <div className="price-bold">
-                      <Text
-                        text={`${formatCurrency(coin[1]?.usd, "USD")}`}
-                        className="sub-heading "
-                      />
-                      <Text
-                        text={`${coin[1].usd_24h_change.toFixed(2)}%`}
-                        className="description"
-                      />
-                      <Text text="(24H)" className="light-text" />
-                    </div>
-                    <Text
-                      text={`${formatCurrency(coin[1].inr, "INR")}`}
-                      className="description-small"
-                    />
-                  </div>
-                </React.Fragment>
-              )
-            )
-          )}
+          Object.entries(coinPriceInfo).map((coin: any, index: number) => (
+            <React.Fragment key={index}>
+              <div className="title">
+                <div className="coin-info">
+                  <Text
+                    text={toTitleCase(coinsList[index])}
+                    className="description-bold"
+                  />
+                </div>
+                <div className="rank">
+                  <Button className="button">Rank</Button>
+                </div>
+              </div>
+              <div className="price">
+                <div className="price-bold">
+                  <Text
+                    text={`${formatCurrency(coin[1]?.usd, "USD")}`}
+                    className="sub-heading "
+                  />
+                  <Text
+                    text={`${coin[1].usd_24h_change.toFixed(2)}%`}
+                    className="description"
+                  />
+                  <Text text="(24H)" className="light-text" />
+                </div>
+                <Text
+                  text={`${formatCurrency(coin[1].inr, "INR")}`}
+                  className="description-small"
+                />
+              </div>
+            </React.Fragment>
+          ))}
       </div>
       <div className="graph-element">
         <div className="graph-header">

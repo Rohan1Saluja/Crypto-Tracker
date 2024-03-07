@@ -1,0 +1,27 @@
+.price-percentage {
+  height: 1.5rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 6rem;
+  .arrow-up {
+    color: rgba(20, 176, 121, 1);
+  }
+  .arrow-down {
+    color: rgba(247, 50, 76, 1);
+  }
+  .text-element {
+    color: rgba(20, 176, 121, 1);
+    padding: 0.2rem 0.5rem;
+  }
+  .negative-text {
+    color: rgba(247, 50, 76, 1);
+  }
+}
+.positive {
+  background-color: rgba(235, 249, 244, 1);
+}
+.negative {
+  background-color: rgb(249, 235, 235, 1);
+}

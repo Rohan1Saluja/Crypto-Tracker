@@ -1,0 +1,28 @@
+.footer-element {
+  padding: 2rem;
+  .liked-list,
+  .trending-list {
+    .chart-previews {
+      display: flex;
+      .chart {
+        border: 1px solid rgba(227, 227, 227, 1);
+        border-radius: 10px;
+        margin: 0.5rem;
+        width: 15rem;
+        overflow: auto;
+        .coin-info {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          .coin-logo {
+            width: 1.2rem;
+            height: 1.2rem;
+            margin: 0 0.2rem;
+            border-radius: 50%;
+            box-shadow: 0 2px 2px rgba(50, 50, 50, 0.1);
+          }
+        }
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@ import { getTrendingCoins } from "../../../utils/api";
 import { Text } from "../../UI/Text";
 import "./TrendingCoins.scss";
 import { CoinItemModel } from "../../../types/trending/trending.model";
-import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material";
+import { PercentageElement } from "../../UI/PercentageElement";
 
 export const TrendingCoins: React.FC = () => {
   const [trendingCoins, setTrendingCoins] = React.useState<CoinItemModel[]>();
@@ -27,6 +27,8 @@ export const TrendingCoins: React.FC = () => {
         ? Number(priceChangePercentage.toFixed(2))
         : null;
 
+    console.log("We've Reached here");
+
     return (
       <div className="coin-details" key={index}>
         <div className="name">
@@ -35,28 +37,12 @@ export const TrendingCoins: React.FC = () => {
             text={`${coin.item.name} (${coin.item.symbol})`}
             className="description"
           />
+          great
         </div>
-        <div
-          className={`price-percentage ${
-            roundedPercentage != null && roundedPercentage >= 0
-              ? "positive"
-              : "negative"
-          }`}
-        >
-          {roundedPercentage != null && roundedPercentage > 0 ? (
-            <ArrowDropUp className="arrow-up" />
-          ) : (
-            <ArrowDropDown className="arrow-down" />
-          )}
-          <Text
-            text={`${roundedPercentage != null ? roundedPercentage : "-"}%`}
-            className={`description-small text-element ${
-              roundedPercentage != null &&
-              roundedPercentage < 0 &&
-              "negative-text"
-            }`}
-          />
-        </div>
+        <PercentageElement
+          roundedPercentage={roundedPercentage != null ? roundedPercentage : 0}
+          className=""
+        />
       </div>
     );
   };

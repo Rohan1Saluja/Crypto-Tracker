@@ -1,5 +1,10 @@
 import coinGeckoApi from "./coinGeckoApiConfig";
 
+export const getPingStatus = async () => {
+  let response = await coinGeckoApi.get(`/ping`);
+  return response?.data;
+};
+
 export const getTrendingCoins = async () => {
   let response = await coinGeckoApi.get(`/search/trending`);
   return response?.data;

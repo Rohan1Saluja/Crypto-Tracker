@@ -5,6 +5,5 @@ export const formatCurrency = (price: number, currency: string) => {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(price);
-  console.log("Formatted Price:", formattedPrice);
   return formattedPrice;
 };
