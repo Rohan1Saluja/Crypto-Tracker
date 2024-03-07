@@ -37,7 +37,6 @@ export const TrendingCoins: React.FC = () => {
             text={`${coin.item.name} (${coin.item.symbol})`}
             className="description"
           />
-          great
         </div>
         <PercentageElement
           roundedPercentage={roundedPercentage != null ? roundedPercentage : 0}

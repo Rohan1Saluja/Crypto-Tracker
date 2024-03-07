@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material";
 import { Text } from "../Text";
+import "./PercentageElement.scss";
 
 interface Props {
   className?: string;

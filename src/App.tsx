@@ -20,7 +20,7 @@ const App = () => {
         console.log("Ping Error");
         setPingResponse(false);
         // Retry logic
-        if (retryCount < maxRetries) {
+        if (retryCount < maxRetries && !pingResponse) {
           setRetryCount(retryCount + 1);
           console.log(`Retrying... Attempt ${retryCount + 1}`);
           setTimeout(fetchPingStatus, retryDelay);
@@ -29,7 +29,6 @@ const App = () => {
   }, [pingResponse]);
   React.useEffect(() => {
     fetchPingStatus();
-    console.log("Pinggg");
   }, [getPingStatus]);
   return pingResponse ? (
     <ThemeProvider theme={theme}>
