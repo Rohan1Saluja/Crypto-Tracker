@@ -1,9 +1,11 @@
 .footer-element {
-  padding: 2rem;
+  padding: 3rem;
   .liked-list,
   .trending-list {
+    padding: 0.5rem;
     .chart-previews {
       display: flex;
+      padding: 0.5rem 0;
       .chart {
         border: 1px solid rgba(227, 227, 227, 1);
         border-radius: 10px;

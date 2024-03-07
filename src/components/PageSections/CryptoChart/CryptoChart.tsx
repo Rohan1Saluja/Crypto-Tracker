@@ -6,6 +6,7 @@ import { getCoinPrice } from "../../../utils/api";
 import { PageLoader } from "../../UI/PageLoader";
 import { TradingViewWidget } from "../../UI/TradingViewWidget";
 import { formatCurrency } from "./utils";
+import { PercentageElement } from "../../UI/PercentageElement";
 
 interface Props {
   coinNames: string;
@@ -94,9 +95,8 @@ export const CryptoChart: React.FC<Props> = ({
                     text={`${formatCurrency(coin[1]?.usd, "USD")}`}
                     className="sub-heading "
                   />
-                  <Text
-                    text={`${coin[1].usd_24h_change.toFixed(2)}%`}
-                    className="description"
+                  <PercentageElement
+                    roundedPercentage={coin[1].usd_24h_change.toFixed(2)}
                   />
                   <Text text="(24H)" className="light-text" />
                 </div>
