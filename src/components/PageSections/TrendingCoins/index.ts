@@ -1,0 +1,1 @@
+export { TrendingCoins } from "./TrendingCoins";

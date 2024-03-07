@@ -1,0 +1,51 @@
+.trending-coins {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  .coin-info {
+    margin-top: 0.5rem;
+
+    .coin-details {
+      display: flex;
+      justify-content: space-between;
+      .name {
+        display: flex;
+        align-items: center;
+        .coin-logo {
+          width: 1.2rem;
+          height: 1.2rem;
+          margin: 0 0.2rem;
+          border-radius: 50%;
+          box-shadow: 0 2px 2px rgba(50, 50, 50, 0.1);
+        }
+      }
+      .price-percentage {
+        height: 1.5rem;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 6rem;
+        .arrow-up {
+          color: rgba(20, 176, 121, 1);
+        }
+        .arrow-down {
+          color: rgba(247, 50, 76, 1);
+        }
+        .text-element {
+          color: rgba(20, 176, 121, 1);
+          padding: 0.2rem 0.5rem;
+        }
+        .negative-text {
+          color: rgba(247, 50, 76, 1);
+        }
+      }
+      .positive {
+        background-color: rgba(235, 249, 244, 1);
+      }
+      .negative {
+        background-color: rgb(249, 235, 235, 1);
+      }
+    }
+  }
+}

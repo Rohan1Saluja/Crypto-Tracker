@@ -1,0 +1,38 @@
+.app-bar {
+  background-color: #ffffff !important;
+  margin: none;
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    min-height: 3.5rem;
+    letter-spacing: -0.03rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+
+    .logo {
+      padding: 0 2rem;
+      margin: 0 1rem;
+      background-image: url("../../assets/koinx.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 1rem;
+      height: 1rem;
+    }
+    .pages {
+      display: flex;
+      color: #000000 !important;
+      .button {
+        background-image: linear-gradient(
+          rgba(40, 112, 234, 1),
+          rgba(27, 74, 239, 1)
+        ) !important;
+        text-transform: none;
+        font-size: small;
+        color: #ffffff;
+      }
+    }
+  }
+}
