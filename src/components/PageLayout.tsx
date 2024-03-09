@@ -7,6 +7,7 @@ import { ArrowRightAlt } from "@mui/icons-material";
 import { Overview } from "./PageSections/Overview/Overview";
 import { useNavigate } from "react-router-dom";
 import { TrendingCoins } from "./PageSections/TrendingCoins";
+import { Teams } from "./PageSections/Teams/Teams";
 
 export const PageLayout: React.FC = () => {
   const navigate = useNavigate();
@@ -68,7 +69,9 @@ export const PageLayout: React.FC = () => {
           <Overview />
         </div>
         <div className="box-item"></div>
-        <div className="box-item"></div>
+        <div className="box-item">
+          <Teams />
+        </div>
       </div>
       <div className="right">
         <div className="get-started">

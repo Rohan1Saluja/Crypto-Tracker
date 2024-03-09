@@ -1,7 +1,13 @@
 import React from "react";
 
-interface Props {}
-export const TradingViewWidget: React.FC<Props> = ({}) => {
+interface Props {
+  timeline: string;
+  coinSymbol: string;
+}
+export const TradingViewWidget: React.FC<Props> = ({
+  timeline,
+  coinSymbol,
+}) => {
   const container = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -14,8 +20,8 @@ export const TradingViewWidget: React.FC<Props> = ({}) => {
       script.async = true;
       script.innerHTML = `
         {
-          "autosize": true,
-          "symbol": "BINANCE:BTCUSD",
+          "autosize": false,
+          "symbol": "BTCUSD",
           "timezone": "Etc/UTC",
           "theme": "light",
           "style": "2",
@@ -23,7 +29,7 @@ export const TradingViewWidget: React.FC<Props> = ({}) => {
           "enable_publishing": false,
           "backgroundColor": "rgba(255, 255, 255, 1)",
           "hide_top_toolbar": true,
-          "range": "1M",
+          "range": "${timeline}",
           "allow_symbol_change": false,
           "details": false,
           "calendar": false,
@@ -34,7 +40,7 @@ export const TradingViewWidget: React.FC<Props> = ({}) => {
         }`;
       container.current.appendChild(script);
     }
-  }, []);
+  }, [timeline]);
 
   return (
     <div

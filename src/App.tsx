@@ -5,12 +5,13 @@ import { Home } from "./pages/home/home";
 import React from "react";
 import { getPingStatus } from "./utils/api";
 import { PageLoader } from "./components/UI/PageLoader";
+import { Error } from "./pages/error";
 
 const App = () => {
   const [pingResponse, setPingResponse] = React.useState(false);
   const [retryCount, setRetryCount] = React.useState(0);
-  const maxRetries = 5; // Set your desired maximum retry count
-  const retryDelay = 1000; // Set the delay between retries in milliseconds
+  const maxRetries = 2; // Set your desired maximum retry count
+  const retryDelay = 3000; // Set the delay between retries in milliseconds
   const fetchPingStatus = React.useCallback(async () => {
     await getPingStatus()
       .then((resp) => {
@@ -20,16 +21,20 @@ const App = () => {
         console.log("Ping Error");
         setPingResponse(false);
         // Retry logic
-        if (retryCount < maxRetries && !pingResponse) {
-          setRetryCount(retryCount + 1);
-          console.log(`Retrying... Attempt ${retryCount + 1}`);
-          setTimeout(fetchPingStatus, retryDelay);
-        }
+      })
+      .finally(() => {
+        setRetryCount((prevRetryCount) => prevRetryCount + 1);
       });
-  }, [pingResponse]);
+  }, []);
   React.useEffect(() => {
-    fetchPingStatus();
-  }, [getPingStatus]);
+    if (retryCount < maxRetries && !pingResponse) {
+      setTimeout(() => {
+        fetchPingStatus();
+      }, retryDelay);
+      console.log(`Retrying... Attempt ${retryCount + 1}`);
+    }
+  }, [fetchPingStatus, retryCount, pingResponse]);
+
   return pingResponse ? (
     <ThemeProvider theme={theme}>
       <Router>
@@ -38,8 +43,10 @@ const App = () => {
         </Routes>
       </Router>
     </ThemeProvider>
-  ) : (
+  ) : retryCount < maxRetries ? (
     <PageLoader className="overlay" />
+  ) : (
+    <Error />
   );
 };
 

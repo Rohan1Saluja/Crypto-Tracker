@@ -26,9 +26,6 @@ export const TrendingCoins: React.FC = () => {
       priceChangePercentage != null
         ? Number(priceChangePercentage.toFixed(2))
         : null;
-
-    console.log("We've Reached here");
-
     return (
       <div className="coin-details" key={index}>
         <div className="name">

@@ -1,4 +1,5 @@
 import { CoinItemModel } from "../../types/trending/trending.model";
+import { PercentageElement } from "../UI/PercentageElement";
 import { Text } from "../UI/Text";
 
 interface Props {
@@ -12,14 +13,18 @@ export const ChartPreviews: React.FC<Props> = ({ coin }) => {
     priceChangePercentage != null
       ? Number(priceChangePercentage.toFixed(2))
       : null;
-  console.log("Rounded:", roundedPercentage);
   return (
     <div className="preview-window">
       <div className="chart">
         <div className="coin-info">
           <img src={coin.item.small} alt="" className="coin-logo" />
 
-          <Text text={`${coin.item.symbol}`} />
+          <Text text={`${coin.item.symbol}`} className="description" />
+          <PercentageElement
+            roundedPercentage={
+              roundedPercentage != null ? roundedPercentage : 0
+            }
+          />
         </div>
         <img src={coin.item.data?.sparkline} alt="" />
       </div>

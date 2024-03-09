@@ -24,7 +24,7 @@ export const CryptoChart: React.FC<Props> = ({
   const [activeTimeline, setActiveTimeline] = React.useState("1H");
   const coinsList = coinNames.split(",");
   const [coinPriceInfo, setCoinPriceInfo] = React.useState<any[]>();
-  const timelines = ["1H", "24H", "7D", "1M", "3M", "6M", "1Y", "ALL"];
+  const timelines = ["1H", "1D", "1W", "1M", "3M", "6M", "12M", "ALL"];
   const [loading, setLoading] = React.useState(false);
 
   const toTitleCase = (str: string) => {
@@ -58,6 +58,7 @@ export const CryptoChart: React.FC<Props> = ({
       .then((resp) => {
         setLoading(true);
         setCoinPriceInfo(resp);
+        console.log("Price Info:", resp);
       })
       .catch((error) => {
         console.log("Error fetching Price");
@@ -129,7 +130,7 @@ export const CryptoChart: React.FC<Props> = ({
           </div>
         </div>
         <div className="graph-content">
-          <TradingViewWidget />
+          <TradingViewWidget timeline={activeTimeline} coinSymbol={"BTC"} />
         </div>
       </div>
     </div>
