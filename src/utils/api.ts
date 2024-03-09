@@ -21,3 +21,8 @@ export const getCoinPrice = async (
   );
   return response?.data;
 };
+
+export const getSearchedCoinTerm = async (searchedTerm: string) => {
+  let response = await coinGeckoApi.get(`/search?query=${searchedTerm}`);
+  return response?.data;
+};

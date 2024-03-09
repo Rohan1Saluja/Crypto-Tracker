@@ -29,6 +29,7 @@ export const TradingViewWidget: React.FC<Props> = ({
           "enable_publishing": false,
           "backgroundColor": "rgba(255, 255, 255, 1)",
           "hide_top_toolbar": true,
+          "hide_legend": true,
           "range": "${timeline}",
           "allow_symbol_change": false,
           "details": false,

@@ -1,0 +1,21 @@
+@import "../../../styles/colors";
+
+.text-input {
+  position: relative;
+  background-color: $light-color;
+  .MuiFormControl-root {
+    width: 100%;
+  }
+  input {
+    padding: 10px;
+    height: 2rem;
+  }
+}
+
+.text-input.small {
+  width: 12rem;
+}
+
+.text-input.large {
+  width: 22rem;
+}

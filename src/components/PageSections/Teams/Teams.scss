@@ -1,3 +1,39 @@
 .teams {
   padding: 1rem;
+  .profile-card {
+    display: flex;
+    align-items: center;
+    background-color: rgba(232, 244, 253, 1);
+    height: 10rem;
+    border-radius: 0.5rem;
+    margin: 1rem;
+    .image-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.5rem;
+      width: 15rem;
+      text-align: center;
+    }
+    .profile-image {
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 5rem;
+      height: 6rem;
+      border-radius: 0.5rem;
+    }
+    .p1 {
+      background-image: url("../../../assets/Profiles/p1.png");
+    }
+    .p2 {
+      background-image: url("../../../assets/Profiles/p2.png");
+    }
+    .p3 {
+      background-image: url("../../../assets/Profiles/p3.png");
+    }
+    .description {
+      width: 75rem;
+      margin: 0 0.5rem;
+    }
+  }
 }

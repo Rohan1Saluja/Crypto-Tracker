@@ -103,7 +103,7 @@ export const CryptoChart: React.FC<Props> = ({
                 </div>
                 <Text
                   text={`${formatCurrency(coin[1].inr, "INR")}`}
-                  className="description-small"
+                  className="description-mid"
                 />
               </div>
             </React.Fragment>

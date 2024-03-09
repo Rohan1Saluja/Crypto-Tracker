@@ -3,7 +3,7 @@
 
 .text {
   color: $primary-color;
-  line-height: 2rem;
+  line-height: 1rem;
 }
 
 .heading {
@@ -14,6 +14,7 @@
 .sub-heading {
   font-size: 1.5rem;
   font-family: InterBold;
+  line-height: 1.8rem;
 }
 
 .bold {
@@ -21,11 +22,12 @@
 }
 
 .description-small {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   font-family: InterRegular;
 }
 .description-extra-small {
-  font-size: 0.8rem;
+  font-size: 0.5rem;
+  color: rgb(77, 77, 77);
   font-family: InterLight;
 }
 .description-mid {

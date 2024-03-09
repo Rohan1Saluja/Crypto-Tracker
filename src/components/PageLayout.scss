@@ -2,7 +2,7 @@
   width: 90%;
   height: 100%;
   color: black !important;
-  padding: 1rem;
+  padding: 5rem 1rem;
   display: flex;
   justify-content: space-evenly;
   .left {
@@ -11,6 +11,12 @@
     .current-channel {
       font-size: smaller;
       color: rgba(62, 87, 101, 1);
+      display: flex;
+      align-items: center;
+      gap: 0 0.2rem;
+      .info-tree {
+        cursor: pointer;
+      }
     }
     .box-item {
       background-color: #ffffff;
@@ -19,6 +25,7 @@
       border-radius: 2%;
       box-shadow: 0 2px 2px rgba(50, 50, 50, 0.1) !important;
       color: rgba(15, 22, 41, 1);
+      overflow: auto;
     }
     .stepper {
       .button {
