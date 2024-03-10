@@ -30,9 +30,10 @@ export const TrendingCoins: React.FC = () => {
       <div className="coin-details" key={index}>
         <div className="name">
           <img src={coin.item.small} alt="" className="coin-logo" />
+          <Text text={`${coin.item.name}`} className="description" />
           <Text
-            text={`${coin.item.name} (${coin.item.symbol})`}
-            className="description"
+            text={`(${coin.item.symbol})`}
+            className="description-mid light-text"
           />
         </div>
         <PercentageElement
