@@ -21,7 +21,7 @@ export const TradingViewWidget: React.FC<Props> = ({
       script.innerHTML = `
         {
           "autosize": false,
-          "symbol": "BTCUSD",
+          "symbol": "${coinSymbol + "USD"}",
           "timezone": "Etc/UTC",
           "theme": "light",
           "style": "2",
@@ -47,11 +47,11 @@ export const TradingViewWidget: React.FC<Props> = ({
     <div
       className="tradingview-widget-container"
       ref={container}
-      style={{ height: "100%", width: "100%" }}
+      style={{ height: "100%", width: "100%", border: "none" }}
     >
       <div
         className="tradingview-widget-container__widget"
-        style={{ height: "calc(100% - 32px)", width: "100%" }}
+        style={{ height: "calc(100% - 32px)", width: "100%", border: "none" }}
       ></div>
       <div className="tradingview-widget-copyright">
         <a

@@ -16,7 +16,6 @@ export const PageFooter: React.FC = () => {
     await getTrendingCoins()
       .then((resp) => {
         setLoading(true);
-        console.log("Response:", resp.coins);
         setTrendingCoins(resp.coins);
       })
       .catch((error) => {

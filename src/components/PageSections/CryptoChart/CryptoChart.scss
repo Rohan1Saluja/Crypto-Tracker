@@ -4,10 +4,16 @@
     .title {
       display: flex;
       align-items: center;
-      width: 30%;
-      margin: 1rem;
-      .button {
-        text-transform: none;
+      .coin-info {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .rank {
+        margin: 0 1rem;
+        padding: 0.4rem;
+        background-color: rgba(128, 138, 157, 1);
+        border-radius: 0.5rem;
       }
     }
     .price {
@@ -46,7 +52,7 @@
       }
     }
     .graph-content {
-      height: 20rem;
+      height: 25rem;
     }
   }
 }

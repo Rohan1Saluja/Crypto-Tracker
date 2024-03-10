@@ -7,32 +7,25 @@ import { PageLoader } from "../../UI/PageLoader";
 import { TradingViewWidget } from "../../UI/TradingViewWidget";
 import { formatCurrency } from "./utils";
 import { PercentageElement } from "../../UI/PercentageElement";
+import { CoinInfoModel } from "../../../types/coins/coins.model";
 
 interface Props {
-  coinNames: string;
+  selectedCoin: CoinInfoModel;
   vs_currencies: string;
   include_24hr_change: boolean;
   precision: string;
 }
 
 export const CryptoChart: React.FC<Props> = ({
-  coinNames,
+  selectedCoin,
   vs_currencies,
   include_24hr_change,
   precision,
 }) => {
   const [activeTimeline, setActiveTimeline] = React.useState("1H");
-  const coinsList = coinNames.split(",");
   const [coinPriceInfo, setCoinPriceInfo] = React.useState<any[]>();
   const timelines = ["1H", "1D", "1W", "1M", "3M", "6M", "12M", "ALL"];
   const [loading, setLoading] = React.useState(false);
-
-  const toTitleCase = (str: string) => {
-    return str.replace(
-      /\w\S*/g,
-      (txt: string) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
-    );
-  };
 
   const handleTimelineClick = (timeline: string) => {
     setActiveTimeline(timeline);
@@ -54,7 +47,12 @@ export const CryptoChart: React.FC<Props> = ({
   };
 
   const fetchCoinPriceInfo = React.useCallback(async () => {
-    await getCoinPrice(coinNames, vs_currencies, include_24hr_change, precision)
+    await getCoinPrice(
+      selectedCoin.id,
+      vs_currencies,
+      include_24hr_change,
+      precision
+    )
       .then((resp) => {
         setLoading(true);
         setCoinPriceInfo(resp);
@@ -66,7 +64,7 @@ export const CryptoChart: React.FC<Props> = ({
       .finally(() => {
         setLoading(false);
       });
-  }, [coinNames, vs_currencies, include_24hr_change]);
+  }, [vs_currencies, include_24hr_change]);
 
   React.useEffect(() => {
     fetchCoinPriceInfo();
@@ -81,13 +79,18 @@ export const CryptoChart: React.FC<Props> = ({
             <React.Fragment key={index}>
               <div className="title">
                 <div className="coin-info">
+                  <img src={selectedCoin.thumb} alt="" />
+                  <Text text={selectedCoin.name} className="description-bold" />
                   <Text
-                    text={toTitleCase(coinsList[index])}
-                    className="description-bold"
+                    text={selectedCoin.symbol}
+                    className="description-small"
                   />
                 </div>
                 <div className="rank">
-                  <Button className="button">Rank</Button>
+                  <Text
+                    text={`Rank #${selectedCoin.market_cap_rank}`}
+                    className="description-mid bold white"
+                  />
                 </div>
               </div>
               <div className="price">
@@ -111,7 +114,10 @@ export const CryptoChart: React.FC<Props> = ({
       </div>
       <div className="graph-element">
         <div className="graph-header">
-          <Text text="Bitcoin Price Chart (USD)" className="description bold" />
+          <Text
+            text={`${selectedCoin.name} Price Chart (USD)`}
+            className="description bold"
+          />
           <div className="timelines">
             {timelines.map((timeline, index) => (
               <div
@@ -130,7 +136,10 @@ export const CryptoChart: React.FC<Props> = ({
           </div>
         </div>
         <div className="graph-content">
-          <TradingViewWidget timeline={activeTimeline} coinSymbol={"BTC"} />
+          <TradingViewWidget
+            timeline={activeTimeline}
+            coinSymbol={selectedCoin.symbol}
+          />
         </div>
       </div>
     </div>
