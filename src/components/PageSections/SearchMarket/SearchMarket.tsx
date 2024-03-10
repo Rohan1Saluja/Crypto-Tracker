@@ -51,8 +51,9 @@ export const SearchMarket: React.FC<Props> = ({ setSelectedCoin }) => {
       <div className="input-box">
         <TextInput
           handleChange={(event: any) => handleInputChange(event)}
-          width="large"
           placeholder="Search markets here"
+          className="input-width"
+          radius="2.5rem"
         />
         <Button>
           <SearchOutlined />

@@ -3,6 +3,9 @@
   .input-box {
     display: flex;
     align-items: center;
+    .input-width {
+      width: 100%;
+    }
   }
   .searched-list {
     padding: 2rem 0;
@@ -10,11 +13,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid rgb(211, 224, 230);
-      border-radius: 0.1rem;
-      padding: 0.5rem;
+      border-bottom: 1px solid rgba(211, 224, 230, 0.484);
+      border-radius: 0.3rem;
+      padding: 0.8rem 0.5rem;
       cursor: pointer;
       gap: 0.5rem;
+    }
+    .row:hover {
+      background-color: rgba(211, 224, 230, 0.484);
     }
     .coin-info {
       display: flex;

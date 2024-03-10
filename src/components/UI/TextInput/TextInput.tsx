@@ -12,6 +12,8 @@ interface Props {
   handleChange?: any;
   type?: string;
   placeholder?: string;
+  className?: string;
+  radius?: string;
 }
 
 export const TextInput: React.FC<Props> = React.forwardRef(
@@ -25,12 +27,14 @@ export const TextInput: React.FC<Props> = React.forwardRef(
       handleChange,
       type = "text",
       placeholder = "",
+      className = "",
+      radius = "0.4rem",
     },
     ref
   ) => {
     const translatedPlaceholder = placeholder;
     return (
-      <div className={`text-input ${width ? width : ""}`}>
+      <div className={`text-input ${width ? width : ""} ${className}`}>
         <TextField
           type={type}
           value={value}
@@ -40,6 +44,7 @@ export const TextInput: React.FC<Props> = React.forwardRef(
           name={name}
           onChange={handleChange}
           placeholder={translatedPlaceholder}
+          InputProps={{ sx: { borderRadius: radius } }}
         />
       </div>
     );
