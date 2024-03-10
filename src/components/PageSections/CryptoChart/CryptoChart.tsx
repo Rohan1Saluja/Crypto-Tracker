@@ -48,7 +48,7 @@ export const CryptoChart: React.FC<Props> = ({
 
   const fetchCoinPriceInfo = React.useCallback(async () => {
     await getCoinPrice(
-      selectedCoin.id,
+      selectedCoin.api_symbol,
       vs_currencies,
       include_24hr_change,
       precision

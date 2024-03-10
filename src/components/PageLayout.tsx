@@ -74,7 +74,7 @@ export const PageLayout: React.FC = () => {
             <div className="">
               <CryptoChart
                 selectedCoin={selectedCoin}
-                precision="2"
+                precision="8"
                 vs_currencies="usd,inr"
                 include_24hr_change
               />
