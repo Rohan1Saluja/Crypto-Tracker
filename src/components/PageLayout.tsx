@@ -9,10 +9,13 @@ import { TrendingCoins } from "./PageSections/TrendingCoins";
 import { Teams } from "./PageSections/Teams/Teams";
 import { SearchMarket } from "./PageSections/SearchMarket";
 import { CoinInfoModel } from "../types/coins/coins.model";
+import { Fundamentals } from "./PageSections/Fundamentals";
 
 export const PageLayout: React.FC = () => {
   const [activeStep, setActiveStep] = React.useState("Overview");
   const [selectedCoin, setSelectedCoin] = React.useState<CoinInfoModel>();
+  const [activeComponent, setActiveComponent] =
+    React.useState<React.ReactNode>();
   const stepperKeys = [
     "Overview",
     "Fundamentals",
@@ -25,32 +28,48 @@ export const PageLayout: React.FC = () => {
 
   const handleStepClick = (step: string) => {
     setActiveStep(step);
-    switch (step) {
-      case "Overview":
-        return <Overview />;
-      case "Fundamentals":
-        return <Overview />;
-      case "News Insights":
-        return <Overview />;
-      case "Sentiments":
-        return <Overview />;
-      case "Team":
-        return <Overview />;
-      case "Technicals":
-        return <Overview />;
-      case "Tokenomics":
-        return <Overview />;
+    if (selectedCoin) {
+      setTimeout(() => {
+        switch (step) {
+          case "Overview":
+            setActiveComponent(<Overview coinID={selectedCoin!.id} />);
+            break;
+          case "Fundamentals":
+            setActiveComponent(<Fundamentals />);
+            break;
+          case "News Insights":
+            setActiveComponent(<Overview coinID={selectedCoin!.id} />);
+            break;
+          case "Sentiments":
+            setActiveComponent(<Overview coinID={selectedCoin!.id} />);
+            break;
+          case "Team":
+            setActiveComponent(<Teams />);
+            break;
+          case "Technicals":
+            setActiveComponent(<Overview coinID={selectedCoin!.id} />);
+            break;
+          case "Tokenomics":
+            setActiveComponent(<Overview coinID={selectedCoin!.id} />);
+            break;
+          default:
+            setActiveComponent(<Overview coinID={selectedCoin!.id} />);
+            break;
+        }
+      }, 300);
     }
   };
+  React.useEffect(() => {
+    if (selectedCoin && activeStep === "Overview") {
+      setActiveComponent(<Overview coinID={selectedCoin!.id} />);
+    }
+  }, [setSelectedCoin, setActiveStep]);
 
   return (
     <div className="layout-screen">
       <div className="left">
-        <div
-          className="current-channel"
-          onClick={() => setSelectedCoin(undefined)}
-        >
-          <div className="info-tree">
+        <div className="current-channel">
+          <div className="info-tree" onClick={() => setSelectedCoin(undefined)}>
             <Text text="Cryptocurrencies" className="description-small" />
           </div>
           {!!selectedCoin && (
@@ -82,23 +101,20 @@ export const PageLayout: React.FC = () => {
           )}
         </div>
         <div className="stepper">
-          {stepperKeys.map((step, index) => (
-            <Button
-              onClick={() => handleStepClick(step)}
-              className={`button ${activeStep === step && "active-button"}`}
-              key={index}
-            >
-              {step}
-            </Button>
-          ))}
+          {selectedCoin &&
+            stepperKeys.map((step, index) => (
+              <Button
+                onClick={() => handleStepClick(step)}
+                className={`button ${activeStep === step && "active-button"}`}
+                key={index}
+              >
+                {step}
+              </Button>
+            ))}
         </div>
-        <div className="box-item">
-          <Overview />
-        </div>
-        {/* <div className="box-item"></div> */}
-        <div className="box-item">
-          <Teams />
-        </div>
+        {selectedCoin && activeStep && (
+          <div className="box-item">{activeComponent}</div>
+        )}
       </div>
       <div className="right">
         <div className="get-started">

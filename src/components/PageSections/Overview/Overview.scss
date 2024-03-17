@@ -1,3 +1,26 @@
 .overview {
-  padding: 1rem;
+  padding: 1.5rem 1rem;
+  .categories {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem 0;
+    .category {
+      background-color: rgba(128, 138, 157, 1);
+      border-radius: 0.2rem;
+      padding: 0.2rem;
+      box-shadow: 0 1px 1px rgba(50, 50, 50, 0.1);
+    }
+    border-bottom: 1px solid rgba(222, 225, 230, 1);
+    border-radius: 0.2rem;
+  }
+  .coin-description {
+    padding: 1rem 0rem;
+    .description {
+      padding: 1rem 0;
+
+      .paragraph {
+        padding: 0.2rem 0;
+      }
+    }
+  }
 }

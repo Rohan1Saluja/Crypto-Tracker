@@ -26,3 +26,15 @@ export const getSearchedCoinTerm = async (searchedTerm: string) => {
   let response = await coinGeckoApi.get(`/search?query=${searchedTerm}`);
   return response?.data;
 };
+
+export const getCoinTechnicals = async (
+  id: string,
+  includeMarketData: boolean = true,
+  includeCommunityData: boolean = true,
+  includeSparkline: boolean = true
+) => {
+  let response = await coinGeckoApi.get(
+    `/coins/${id}?localization=false&market_data=${includeMarketData}&community_data=${includeCommunityData}&sparkline=${includeSparkline}`
+  );
+  return response?.data;
+};

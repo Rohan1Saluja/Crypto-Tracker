@@ -29,26 +29,11 @@ export const CryptoChart: React.FC<Props> = ({
 
   const handleTimelineClick = (timeline: string) => {
     setActiveTimeline(timeline);
-    // switch (timeline) {
-    //     case "Overview":
-    //       return <Overview />;
-    //     case "Fundamentals":
-    //       return <Overview />;
-    //     case "News Insights":
-    //       return <Overview />;
-    //     case "Sentiments":
-    //       return <Overview />;
-    //     case "Team":
-    //       return <Overview />;
-    //     case "Technicals":
-    //       return <Overview />;
-    //     case "Tokenomics":
-    //       return <Overview />;
   };
 
   const fetchCoinPriceInfo = React.useCallback(async () => {
     await getCoinPrice(
-      selectedCoin.api_symbol,
+      selectedCoin.id,
       vs_currencies,
       include_24hr_change,
       precision
