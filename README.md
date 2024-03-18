@@ -1,3 +1,7 @@
+# Link - 
+https://koinx-frontend-assignment-nine.vercel.app/
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -24,6 +28,8 @@ export default {
   },
 }
 ```
+
+This Project was initially a part of the frontend intern assignment by KoinX but I decided to extend the functionality and use it as a personal project.
 
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
