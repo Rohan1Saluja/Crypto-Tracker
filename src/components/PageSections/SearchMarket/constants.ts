@@ -56,6 +56,37 @@ export const getDefaultMarketList = () => {
         thumb:
           "https://assets.coingecko.com/coins/images/4128/thumb/solana.png",
       },
+      {
+        api_symbol: "staked-ether",
+        id: "staked-ether",
+        large:
+          "https://assets.coingecko.com/coins/images/13442/large/steth_logo.png",
+        market_cap_rank: 6,
+        name: "Lido Staked Ether",
+        symbol: "STETH",
+        thumb:
+          "https://assets.coingecko.com/coins/images/13442/thumb/steth_logo.png",
+      },
+      {
+        api_symbol: "ripple",
+        id: "ripple",
+        large:
+          "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png",
+        market_cap_rank: 7,
+        name: "XRP",
+        symbol: "XRP",
+        thumb:
+          "https://assets.coingecko.com/coins/images/44/thumb/xrp-symbol-white-128.png",
+      },
+      {
+        api_symbol: "usd-coin",
+        id: "usd-coin",
+        large: "https://assets.coingecko.com/coins/images/6319/large/usdc.png",
+        market_cap_rank: 8,
+        name: "USDC",
+        symbol: "USDC",
+        thumb: "https://assets.coingecko.com/coins/images/6319/thumb/usdc.png",
+      },
     ],
     exchanges: [],
     icos: [],
